@@ -1,113 +1,105 @@
-# Morning Brief — June 2, 2026
+# Morning Brief — 2026-06-02
+
+> Generated: 2026-06-02 | Sources: Google, HuggingFace, GitHub, arXiv, official release notes
 
 ---
 
 ## 1. Speech Recognition Systems
 
-**Qwen3-ASR** (Alibaba, Jan 2026) remains a headline model: 52-language open-source ASR, the widest multilingual coverage of any open model. The **Canary-Qwen 2.5B** still leads the Hugging Face Open ASR Leaderboard at 5.63% average WER, pairing a FastConformer encoder with a Qwen3-1.7B LLM decoder.
+### Google Chirp 3 — Now Generally Available
+Google Cloud announced **General Availability of Chirp 3: Transcription**, its latest multilingual ASR generative model. Claims state-of-the-art WER on multilingual benchmarks.
+- [Google Cloud Speech-to-Text Release Notes](https://docs.cloud.google.com/speech-to-text/docs/release-notes)
 
-**Architectural trend to watch**: Conformer encoders + LLM decoders (also seen in Granite-Speech and Phi-4-Multimodal) now consistently beat traditional encoder-only architectures on English benchmarks. The LLM decoder corrects ASR errors via contextual reasoning.
+### Google AI Edge Eloquent (iOS, April 2026 — still trending)
+Released April 6 with no announcement. Runs **Gemma-based on-device ASR**, optional Gemini cloud cleanup, no subscription, no usage caps. Competitive threat to commercial STT APIs.
+- [Google Launches AI Edge Eloquent](https://theaiinsider.tech/2026/04/08/google-launches-ai-edge-eloquent-dictation-app-to-advance-on-device-speech-recognition/)
 
-**On the horizon**: IEEE SLT 2026 call for papers is open — focus areas include multimodal processing, LLM-augmented ASR, and privacy-preserving voice tech. Good signal for upcoming research.
+### Google I/O 2026 — Rambler (real-time STT)
+Part of Gemini Intelligence for Android: **Rambler** does real-time speech-to-text with automatic filler-word removal and dictation restructuring.
+- [Everything Announced at I/O 2026](https://medium.com/data-science-collective/google-just-declared-war-on-every-tech-company-at-once-heres-everything-announced-at-i-o-2026-fa980c62ec9b)
+
+### Apple × Google — Gemini-Powered Siri
+Apple and Google confirmed a multi-year collaboration integrating Google's Gemini 3 architecture into Siri. Significant competitive shift for Apple's on-device ASR pipeline.
+- [Apple and Google AI Partnership 2026](https://www.kavout.com/market-lens/apple-and-google-ai-partnership-2026-everything-you-need-to-know-about-gemini-powered-siri)
+
+### Open ASR Leaderboard — Architecture Trend
+Conformer encoders + LLM decoders (**Canary-Qwen, Granite-Speech, Phi-4-Multimodal**) now top English WER benchmarks on the Open ASR Leaderboard.
+- [Fastest Open Source ASR Models 2026](https://www.siliconflow.com/articles/en/fastest-open-source-speech-recognition-models)
+
+### Microsoft Paza (February 2026)
+PazaBench + Paza ASR models released for **low-resource languages** — worth monitoring for coverage gaps in commercial solutions.
+- [Microsoft Research: Paza](https://www.microsoft.com/en-us/research/blog/paza-introducing-automatic-speech-recognition-benchmarks-and-models-for-low-resource-languages/)
+
+### IEEE SLT 2026 — Submission Deadline: June 17
+If publishing, the call is open for speech recognition, spoken language understanding, multimodal processing, LLM+ASR, and privacy-preserving voice tech.
+- [SLT 2026 Call for Papers](https://attend.ieee.org/slt-2026/call-for-papers/)
 
 ---
 
-## 2. AI Applications — Hugging Face & GitHub Trending
+## 2. AI Applications — HuggingFace & GitHub Trending
 
-### Hugging Face
-- **ARIS** — open-source research harness using cross-model adversarial collaboration for reliable long-term research outcomes (orchestration + assurance layers).
-- **SmolDocling** — compact 256M-parameter VLM for end-to-end document conversion, new markup format, strong cross-document-type performance.
-- **Mega-ASR** — improved real-world ASR robustness via compound-data construction and progressive acoustic-to-semantic optimization.
-- **LongCat-Video** — 13.6B Diffusion Transformer for efficient long video generation.
-
-### GitHub Trending (early June 2026)
-- **Understand-Anything** — jumped to #1 with ~2,000 weekly stars (new entrant).
-- **OpenClaw** (210k+ stars) — local-first personal AI gateway; connects to 50+ integrations (WhatsApp, Telegram, Slack, Signal).
-- **Ollama** (165k+ stars) — local LLM runtime, Docker-style simplicity.
-- **ComfyUI** (106k+ stars) — node-based visual diffusion workflow.
-- **Microsoft AutoGen 1.0 GA** — major architectural revision released this year; multi-agent framework matured.
-- New: **MoneyPrinterTurbo**, **Microsoft markitdown**, **codegraph**, **build-your-own-x** all entering trending.
-
----
-
-## 3. Claude Code Updates
-
-**Claude Opus 4.8** (released May 28, 2026) is now the default model for Claude Code on Max/Team/Enterprise/API plans. Key improvements:
-- 2.5× speed fast mode, 3× cheaper than Opus 4.7 fast mode.
-- Substantially lower rates of deceptive/misaligned behavior vs. 4.7.
-- Configured for "high effort" by default; optional higher-intensity mode available.
-
-**Platform features shipped recently:**
-| Feature | Detail |
+### HuggingFace Trending Models (Spring/Summer 2026)
+| Model | Highlight |
 |---|---|
-| `ultracode` dynamic workflows | Orchestrate many sub-agents from a single script (renamed from "workflow") |
-| `/ultrareview` | Cloud-based fleet of bug-hunting agents; reports to CLI or Desktop |
-| `/goal` command | Maintains context across turns until completion condition met |
-| Auto mode hard-deny rules | Unconditional blocking of specific actions |
-| Plugin loading via `--plugin-url` / `--plugin-dir` | Also auto-loads from `.claude/skills/` |
-| Windows PowerShell default | Git Bash no longer required |
+| **Kimi K2.6** | Top open-weight for coding, tool use, visual tasks, long-horizon agents |
+| **GLM-5.1** (Z.AI) | 200K context, strong agentic engineering |
+| **Qwen3 / Gemma 4** | Best Apache 2.0 options |
+| **Wan2.2-TI2V-5B** | Text-to-Image-to-Video, 5B params (ByteDance lineage) |
+| **CosyVoice2-0.5B** | Top open-source TTS/voice model |
 
-**Upcoming**: Anthropic's **Mythos-class models** expected "in coming weeks" — notable for coding and cyber capabilities. Anthropic also raised at a $965B valuation (May 29).
+- [State of Open Source on HF Spring 2026](https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026)
+- [Best Open-Source LLMs 2026](https://huggingface.co/blog/daya-shankar/open-source-llms)
 
----
+### GitHub Trending — Notable Repos
+- **Understand-Anything** — ~2,000 weekly stars, fastest rising this week
+- **OpenClaw** — 210k+ stars, breakout viral repo of early 2026
+- **ComfyUI** — 106k+ stars, node-based AI workflow system
+- **Ollama** — 165k+ stars, local LLM serving in Go
 
-## 4. New MCP Servers & Protocol
-
-**MCP spec release candidate** for `2026-07-28` is now open for review — the largest protocol revision since launch. Key changes:
-- **Stateless core**: remote servers can now run behind plain round-robin load balancers (no sticky sessions required).
-- **`ttlMs` + `cacheScope`** on list/resource results — HTTP Cache-Control-style freshness for `tools/list`.
-- **MCP Apps extension**: server-rendered UIs.
-- **Tasks extension**: long-running async work.
-- Auth aligned to OAuth + OpenID Connect.
-
-**Enterprise adoption**: **Salesforce Agentforce 3** (announced Jun 23 preview) is anchoring its agent platform on MCP, launching three servers: Salesforce DX, Heroku Platform, and MuleSoft MCP.
-
-Ten-week window for SDK/client implementers to validate before final spec drops July 28.
+- [Top AI GitHub Repos 2026](https://blog.bytebytego.com/p/top-ai-github-repositories-in-2026)
 
 ---
 
-## 5. Android App Development
+## 3. Claude Code & MCP Servers
 
-**Android 17** (stable release targeting June 2026, API level 37):
-- **Compose everywhere**: Android 17 marks full shift to Compose-based development for widgets across mobile, Wear OS, and Android Auto via Jetpack Glance.
-- **Android CLI now stable**: AI agents can now programmatically drive core Android tasks (SDK download, app deployment) — significant for AI-assisted development.
-- **Emulator P2P networking**: zero-config virtual device connectivity, no port forwarding.
-- **ADB Wi-Fi 2.0**: stays connected across network changes.
-- **Google AI Studio → Android app**: "Build an Android app" prompt flow lets anyone generate a native app in minutes (announced at I/O 2026).
-- **Privacy**: granular per-task location controls; OS verification feature against modified Android builds.
+### Claude Code — Recent Updates (May–June 2026)
+- **`claude ultrareview`** — cloud-based code review for CI pipelines; `/ultrareview` public research preview launches a fleet of bug-hunting agents
+- **Dynamic Workflows** — orchestrate many sub-agents from a single script
+- **Agent View** — unified session screen: running processes, pending approvals, completed tasks
+- **Auto Mode hard deny rules** — unconditional blocking of specific actions
+- **Windows**: Git Bash no longer required; PowerShell is now default
+- **Claude Opus 4.8** — now default model for Max/Team Premium/Enterprise
 
----
+- [Claude Code What's New](https://code.claude.com/docs/en/whats-new)
+- [Claude Code Releases on GitHub](https://github.com/anthropics/claude-code/releases)
 
-## 6. Advertisement & In-App Monetization
+### MCP Ecosystem — June 2026 Status
+- **19,700+ servers** on mcp.so; Smithery has 7,000+
+- **MCP Spec Release Candidate** published — stateless protocol core, Extensions framework, Tasks, MCP Apps, authorization hardening; final spec ships **July 28, 2026**
+- Production pain points (auth, scalability, governance) being addressed in the 2026 roadmap
 
-**Market scale**: Global IAP market projected at **$322.8B in 2026**; in-app advertising at ~$390B. Consumer app spend hit $155.8B in 2025.
-
-**Key 2026 trends:**
-- **Hybrid monetization dominates**: 60%+ of top-grossing apps combine subscriptions + consumable IAP + ads — single-model strategies underperforming.
-- **Rewarded ads performing best**: higher engagement, lower churn vs. interstitials.
-- **Contextual/on-device targeting**: replacing cross-app behavioral tracking; relies on in-app signals and real-time engagement context (privacy regulation driver).
-- **AI-driven personalization**: dynamic paywall timing, personalized offer surfaces.
-- **Premium AI features as IAP**: dedicated tier for AI-powered features becoming a new monetization layer in productivity/utility apps.
-
-Note: ~5% of users complete a purchase — volume acquisition remains the IAP growth lever.
+- [MCP 2026 Roadmap](https://thenewstack.io/model-context-protocol-roadmap-2026/)
+- [MCP Spec Release Candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)
 
 ---
 
-## 7. Google & Apple Competitive Watch
+## 4. Android & Monetization
 
-### Google I/O 2026 (May 2026)
-- **Gemini Omni**: multimodal-in, any-output (starts with video-to-anything).
-- **Gemini 3.5 Flash**: frontier intelligence + action-taking.
-- **Google Antigravity**: agent-first dev platform — moving from "AI writes code" to "agents take action."
-- **Modern Web Guidance** (early preview): expert-vetted skills for AI coding tools covering accessibility, performance, security.
+### IAP Revenue — Record High
+- 2025 global IAP revenue: **$167B** (+10.6% YoY); non-gaming IAP surpassed gaming for first time (+21% YoY)
+- 2026 IAP revenue projected: **$95B** (apps segment)
+- Hybrid models (ads + subscriptions + IAP) improve LTV ~30% vs single-stream
 
-### Apple WWDC 2026 (June 8–12 — starts in 6 days)
-- **Siri redesign**: full conversational AI chatbot backed by Apple × Google Gemini-based custom model.
-- **Core AI framework**: successor to Core ML; gives developers advanced on-device ML deployment tools.
-- **Third-party AI defaults**: iOS 27/iPadOS 27/macOS 27 will allow setting third-party AI (e.g., ChatGPT, Gemini) as default for Writing Tools and Image Playground.
-- **On-device AI as differentiator**: Apple leaning on 15 years of custom silicon for private, on-device inference.
-- **Platform versions**: iOS 27, macOS 27, watchOS 27, visionOS 27, tvOS 27 all expected.
+### Key Android Monetization Trends
+- **AI-driven dynamic pricing** — real-time IAP price adjustment based on user behavior, time of day, engagement
+- **RevenueCat + Google Play Billing** subscriptions = highest LTV for most Android apps
+- **AdMob** remains standard for utility apps with low pay intent
+- Top-grossing apps in 2026 stack 2–3 monetization models
+
+- [In-App Purchase Earning Trends 2026](https://www.crosswayconsulting.com/in-app-purchase-earning-trends-in-2026-app-monetization-guide/)
+- [Android App Monetization 2026](https://androiddocs.com/android-app-monetization/)
+- [State of Mobile 2026](https://sensortower.com/blog/state-of-mobile-2026)
 
 ---
 
-*Sources: [SiliconFlow ASR](https://www.siliconflow.com/articles/en/fastest-open-source-speech-recognition-models) · [Gladia STT](https://www.gladia.io/blog/best-open-source-speech-to-text-models) · [HF Papers Trending](https://huggingface.co/papers/trending) · [HF Spring 2026 State of OS](https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026) · [Claude Code Releases](https://github.com/anthropics/claude-code/releases) · [Claude Code What's New](https://code.claude.com/docs/en/whats-new) · [Anthropic Opus 4.8 valuation](https://fortune.com/2026/05/29/anthropic-raises-65-billion-at-record-965-billion-valuation-promises-mythos-ai-model-in-wide-release-in-coming-weeks-releases-claude-opus-4-8/) · [MCP Release Candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/) · [MCP 2026 Roadmap](https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/) · [Android Show I/O 2026](https://www.android.com/new-features-on-android/io-2026/) · [Android Developer Tools](https://android-developers.googleblog.com/2026/05/whats-new-android-developer-tools.html) · [App Monetization Stats](https://www.appverticals.com/blog/mobile-app-monetization-statistics/) · [Google I/O 2026 Announcements](https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/) · [Apple WWDC 2026](https://developer.apple.com/wwdc26/) · [GitHub Trending](https://github.com/trending)*
+*No breaking overnight news requiring immediate action. All items above reflect the most significant developments from the past 24–48 hours across monitored focus areas.*
