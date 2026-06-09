@@ -1,99 +1,89 @@
 # Morning Brief — 2026-06-09
 
-> Auto-generated | Focus areas: Speech Recognition · AI/HuggingFace · Claude Code & MCP · Android Dev (Ads/IAP)
+> Generated: 2026-06-09 | Focus: Speech Recognition · AI Models · Android Dev · Ads/IAP
 
 ---
 
-## 1. Speech Recognition & Competitive Intelligence
+## 1. Speech Recognition
 
-### Apple WWDC 2026: Siri rebuilt on Google Gemini (announced June 8)
-The headline story of the last 24 hours. Apple has completely overhauled Siri, now powered by a custom ~1.2T-parameter Google Gemini model licensed for ~$1 billion/year. Key architecture:
-- **On-device** — Apple's own small model handles simple requests (speed + privacy)
-- **Private Cloud Compute** — mid-complexity tasks
-- **Gemini cloud** — heaviest reasoning queries
+### [HOT] Apple WWDC 2026: Siri Rebuilt on Google Gemini
+Yesterday (June 8) Apple opened WWDC 2026 with its most significant Siri overhaul yet. The new **Siri AI** runs on a custom 1.2-trillion-parameter Gemini model hosted in Apple's data centers (via a ~$1B/year Google deal). On-device tasks (dictation, voice, personal context) still run Apple Silicon foundation models; only complex world-knowledge queries route to the cloud via Private Cloud Compute. Ships in beta later this year with iOS 27 / macOS 27 (Golden Gate).
+- [TechCrunch — WWDC 2026 full recap](https://techcrunch.com/2026/06/09/wwdc-2026-everything-announced-on-siri-ai-os-27-apple-intelligence-and-more/)
+- [TechTimes — Siri rebuilt on Gemini](https://www.techtimes.com/articles/317985/20260608/apple-wwdc-2026-siri-rebuilt-gemini-homeos-previewed-cook-farewell-keynote.htm)
 
-New "Siri AI" promises more conversational, context-aware interactions and major improvements to voice dictation. This is a direct competitive shift vs. standalone ASR pipelines.
+### Google Chirp 3 Now GA
+Google Cloud Speech-to-Text V2 now has **Chirp 3: Transcription** in General Availability — their latest multilingual ASR generative model with improved accuracy, speaker diarization, and automatic language detection.
+- [Google Cloud Release Notes](https://docs.cloud.google.com/speech-to-text/docs/release-notes)
 
-*Sources: [Business Standard](https://www.business-standard.com/amp/technology/tech-news/wwdc-2026-apple-unveils-siri-ai-gemini-powered-apple-intelligence-more-126060900042_1.html) · [NPR](https://www.npr.org/2026/06/08/nx-s1-5847937/apple-wwdc-2026-siri-ai-tim-cook) · [TechJournal](https://techjournal.org/wwdc-2026-siri-gemini-ios-27)*
+### Google Eloquent: Silent Launch of Offline Dictation App for iOS
+Google quietly dropped **AI Edge Eloquent** on the iOS App Store (April 2026) with no announcement. It uses on-device Gemma-based ASR with optional Gemini cloud cleanup — no subscription, no usage caps. Worth watching as a direct competitor to on-device Whisper deployments.
+- [The Next Web](https://thenextweb.com/news/google-offline-dictation-app-ios)
 
-### ByteDance: Seed Speech 2 & Seed Full-Duplex LLM
-- **Seed Speech 2 TTS** — conversational speech system combining expressive TTS + strong multilingual ASR + prompt-controlled emotion and contextual reasoning. Targets voice agents and customer support.
-- **Seed Full-Duplex Speech LLM** — live on Doubao App; 12% improvement in conversational fluency; attentive listening with interference suppression for natural real-time interaction.
+### Notable ASR Architecture Trend
+Every model hitting state-of-the-art in 2025–2026 uses **Conformer encoder + LLM decoder**:
+- **Qwen3-ASR** (Jan 2026): 1.7B params, Conformer + Qwen decoder, 52 languages incl. 22 Chinese dialects
+- **NVIDIA Canary-Qwen**: Cache-Aware FastConformer for real-time streaming ASR
+- **Cohere Transcribe** (March 2026): Reached #1 on HuggingFace Open ASR Leaderboard
+- [ASR Deep Dive 2025–2026 — Ruoqi Jin](https://ruoqijin.com/blog/asr-deep-dive-2025-2026)
 
-*Sources: [AI Adoption Agency](https://aiadoptionagency.com/bytedance-seed-speech-2-tts-ai-voice-agents-guide/)*
-
-### IEEE SLT 2026 Call for Papers (deadline June 17)
-Theme: "Spoken Language Technology for Social Wellbeing in the Digital Privacy Era." Topics include robustness against adversarial attacks, fairness/bias in speech systems, and privacy-preserving voice technologies.
-
-*Sources: [IEEE SLT 2026](https://attend.ieee.org/slt-2026/call-for-papers/)*
-
----
-
-## 2. AI / HuggingFace Trending Models
-
-Notable models surfaced in the last ~48 hours:
-
-| Model | What it is |
-|---|---|
-| **KVarN** (June 2) | Calibration-free KV-cache quantizer using Hadamard rotation + dual-scaling variance normalization — reduces error accumulation in autoregressive LLM decoding |
-| **Sapiens2** | High-res vision transformers (0.4B–5B params) pretrained on ~1B human images; +4 mAP pose estimation, 45.6% error reduction in surface normal estimation |
-| **YOLO26** | Unified real-time vision model (detection + segmentation + pose); NMS-free inference, improved training strategies |
-| **DeepSeek-OCR-2** | OCR-specialised VLM: SAM ViT-B vision encoder + Qwen2 hybrid attention + DeepSeek-V2 MoE language model |
-| **LongCat-Video** | 13.6B DiT-based long video generation model (June 3) |
-
-HuggingFace's "State of Open Source Spring 2026" report notes the platform has crossed **2 million hosted models**.
-
-*Sources: [HuggingFace Papers](https://huggingface.co/papers) · [HuggingFace Models](https://huggingface.co/models) · [HuggingFace Blog](https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026)*
+### Upcoming Conferences
+- **Odyssey 2026** — June 23–26, Lisbon: Speaker & language recognition, deepfake detection, health/emotion from speech
+- **IEEE SLT 2026**: Submissions due June 17; focus on privacy, fairness, deepfake detection
+- [Odyssey 2026](https://odyssey2026.inesc-id.pt/2025/11/21/call-for-papers/) | [SLT 2026](https://attend.ieee.org/slt-2026/call-for-papers/)
 
 ---
 
-## 3. Claude Code & MCP Servers
+## 2. Trending AI Models (HuggingFace / GitHub)
 
-### Claude Code — recent changelog highlights
-- **`fallbackModel` setting** — configure up to 3 fallback models tried in order when primary is overloaded/unavailable
-- **Glob patterns in deny rules** — broader tool-name filtering
-- **`/code-review` command** — reports correctness bugs at a configurable effort level
-- **MCP tool rendering fixes** — `/mcp tools` list and detail views now handle long/multi-line names and descriptions correctly
-- Improved retries, cross-session message security, and more reliable thinking controls
+### HuggingFace Trending (Speech & Audio)
+- **Unified Streaming Audio Model** (NUS, June 3): End-to-end framework combining offline + real-time audio instruction following — one model for multiple audio interaction modes.
+- **SimulU**: Training-free policy for long-form simultaneous speech-to-speech translation.
+- **MOSS-TTS**: New TTS technical report trending this week.
+- **Microsoft VibeVoice**: Generates up to 90 min of multi-speaker (up to 4 speakers) conversational audio (podcasts) from text.
+- [HuggingFace Trending Papers](https://huggingface.co/papers/trending)
 
-*Sources: [Claude Code Changelog](https://code.claude.com/docs/en/changelog) · [Releasebot – Claude Code](https://releasebot.io/updates/anthropic/claude-code)*
+### HuggingFace Trending (General AI)
+- **Holo3.1** (Hcompany, June 2): State-of-the-art computer-use agent checkpoint — fast local inference, minimal performance degradation vs cloud. [Blog post](https://huggingface.co/blog/Hcompany/holo31)
+- **YOLO26**: NMS-free real-time unified model — detection, segmentation, pose estimation in one.
+- **UniCorn**: Self-play multimodal self-improvement framework, SOTA on text-to-image.
+- **LongCat-Video** (13.6B): DiT-based long video generation.
+- [HuggingFace Models](https://huggingface.co/models)
 
-### MCP Ecosystem
-- Official registry now lists **9,400+ servers**
-- **Streamable HTTP** has replaced old HTTP+SSE transport as the standard for remote MCP servers (per Nov 2025 MCP spec)
-- **OAuth 2.1** is now the auth standard for remote MCP servers
-- **AWS MCP Server** became generally available; a fix was shipped June 5
-- A curated list of 7 recommended MCP servers for Claude Code in 2026 is circulating on Medium
-
-*Sources: [AWS Blog](https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available/) · [Releasebot – Anthropic](https://releasebot.io/updates/anthropic) · [Medium – MCP Servers 2026](https://medium.com/ai-analytics-diaries/the-7-mcp-servers-every-developer-should-add-to-claude-code-in-2026-1ba8687f41f7)*
-
----
-
-## 4. Android Development — Ads & IAP
-
-### IAP Commission Reduction (rolling out by June 30)
-Following the Epic Games antitrust settlement, Google is lowering Play Store service fees:
-- **20%** on transactions from existing installs (down from 30%)
-- **15%** on transactions from new app installs
-- **10%** on recurring subscriptions
-
-Rollout applies to EEA, UK, and US. Significant for IAP-heavy apps.
-
-*Sources: [Android Developers Blog](https://android-developers.googleblog.com/2026/03/a-new-era-for-choice-and-openness.html)*
-
-### June 2026 Android Feature Drop (released June 2)
-- **Google Play Books** — new AI-powered "Book Insights" feature
-- **Phone by Google** — Fake Call Detection now built natively into the app
-- **Quick Share** — AirDrop expansion underway
-- **Android 17** release imminent
-
-*Sources: [9to5Google – June Drop](https://9to5google.com/2026/06/02/june-2026-android-drop/) · [Google Blog](https://blog.google/products-and-platforms/platforms/android/android-drop-june-2026/)*
-
-### Google Buying Android App Code from Developers
-Google is inviting select Play Store developers to a "confidential content offer pilot," purchasing app code to train internal AI/developer tooling. Details remain limited.
-
-*Sources: [9to5Google](https://9to5google.com/2026/06/03/google-android-app-code-ai-models/)*
+### GitHub Trending
+- **OpenClaw** (210k+ stars): Local-first personal AI assistant connecting models to 50+ integrations (WhatsApp, Slack, Signal, etc.) — fastest-growing repo in GitHub history.
+- **mvanhorn/last30days-skill**: AI agent skill for synthesizing news/trends from Reddit, X, YouTube, HN — relevant tool to watch.
+- **Langflow / Dify / Flowise**: Visual AI agent builders remain dominant (146k / 136k / 51k stars).
+- [GitHub Trending](https://github.com/trending)
 
 ---
 
-*Brief generated on 2026-06-09. Next brief tomorrow morning.*
+## 3. Android Development
+
+### Google I/O 2026 Key Takeaways (from May)
+- **Android CLI is stable**: Any AI agent (Claude Code, Codex, Antigravity) can now programmatically drive core Android tasks.
+- **Jetpack Compose is the standard**: View toolkit enters maintenance mode — all new UI should be Compose.
+- **AI Studio → Android apps**: Build native Android apps directly by prompting in AI Studio; shrinks setup from weeks to minutes.
+- **React Native / iOS → Kotlin migration agent**: Android Studio agent automates code migration.
+- **Play Shorts**: Full-screen short-video feed for app discovery, rolling out in the US.
+- **Ask Play**: AI-powered natural-language app discovery overlay.
+- [Google I/O 2026 Developer Blog](https://developers.googleblog.com/all-the-news-from-the-google-io-2026-developer-keynote/)
+- [Android Show I/O Edition](https://www.android.com/new-features-on-android/io-2026/)
+
+---
+
+## 4. Ads & IAP Trends
+
+### Subscriptions Outpacing Ads and IAP (Q1 2026)
+Subscription revenue surged **+105% YoY** in Q1 2026, outpacing both ads and one-time IAP. Hybrid models (IAA + IAP) remain the dominant strategy — users who engage with rewarded ads are **4.5x more likely** to make an IAP.
+
+### IAP Market
+- Global IAP revenue hit ~$167B (up 10.6% YoY).
+- Projected to reach **$257B** in 2026 — 48% of all mobile app earnings.
+- Google Play doubled iOS App Store's IAP growth rate despite lower ARPU per user.
+- AI-driven hyper-personalization of IAP pricing and timing is the key emerging lever.
+- [SensorTower State of Mobile 2026](https://sensortower.com/blog/state-of-mobile-2026)
+- [Mobile Marketing Reads — Q1 Subscription Surge](https://www.mobilemarketingreads.com/subscription-revenue-surges-105-yoy-in-q1-2026-outpacing-ads-and-in-app-purchases/)
+
+---
+
+*Sources: TechCrunch, TechTimes, Google Cloud Docs, The Next Web, HuggingFace, GitHub, Android Developers Blog, SensorTower, Mobile Marketing Reads*
